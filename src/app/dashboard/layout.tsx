@@ -1,5 +1,5 @@
-import TopNav from "@/components/layout/Navigation/TopNav";
-import Sidebar from "@/components/layout/Sidebar/Sidebar";
+import TopNav from "@/components/layout/navigation/TopNav";
+import Sidebar from "@/components/layout/sidebar/Sidebar";
 import { SidebarProvider } from "@/context/SidebarContext";
 
 export default function DashboardLayout({
