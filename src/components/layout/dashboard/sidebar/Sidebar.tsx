@@ -3,10 +3,14 @@
 import { useSidebar } from "@/context/SidebarContext";
 import {
   AlignJustify,
+  Calendar,
   ChevronFirst,
   ChevronLast,
   HomeIcon,
+  ListCheck,
   LogOut,
+  ReceiptIcon,
+  User2Icon,
 } from "lucide-react";
 
 const SidebarLinks = [
@@ -14,6 +18,26 @@ const SidebarLinks = [
     name: "Overview",
     href: "/overview",
     icon: <HomeIcon />,
+  },
+  {
+    name: "Client List",
+    href: "/overview",
+    icon: <User2Icon />,
+  },
+  {
+    name: "Reservations",
+    href: "/overview",
+    icon: <Calendar />,
+  },
+  {
+    name: "Reports",
+    href: "/overview",
+    icon: <ReceiptIcon />,
+  },
+  {
+    name: "Smart List",
+    href: "/overview",
+    icon: <ListCheck />,
   },
 ];
 
@@ -46,15 +70,16 @@ const Sidebar = () => {
               </div>
             )}
           </div>
-          <div className="pl-3">
+          <div className="pl-2">
             {SidebarLinks.map((link) => (
               <div
-                className="flex flex-row items-center gap-4 rounded-bl-md rounded-tl-md p-3 hover:bg-gray-200 hover:text-gray-800"
+                className="my-2 flex flex-row items-center gap-4 rounded-bl-sm rounded-tl-sm bg-background p-4 hover:bg-gray-100 hover:text-gray-800"
                 key={link.name}
               >
-                {" "}
                 <div>{link.icon}</div>
-                <span className={`${isOpen ? "" : "hidden"}`}>{link.name}</span>
+                <span className={`${isOpen ? "whitespace-nowrap" : "hidden"} `}>
+                  {link.name}
+                </span>
               </div>
             ))}
           </div>

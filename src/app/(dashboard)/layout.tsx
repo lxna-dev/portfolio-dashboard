@@ -1,5 +1,5 @@
-import TopNav from "@/components/layout/navigation/TopNav";
-import Sidebar from "@/components/layout/sidebar/Sidebar";
+import TopNav from "@/components/layout/dashboard/navigation/TopNav";
+import Sidebar from "@/components/layout/dashboard/sidebar/Sidebar";
 import { SidebarProvider } from "@/context/SidebarContext";
 
 export default function DashboardLayout({
@@ -8,7 +8,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className="font-geistSans flex flex-row">
+    <section className="flex flex-row font-geistSans">
       <SidebarProvider>
         <Sidebar></Sidebar>
         <div className="flex w-full flex-col">
