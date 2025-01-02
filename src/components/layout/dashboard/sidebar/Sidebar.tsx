@@ -12,6 +12,7 @@ import {
   ReceiptIcon,
   User2Icon,
 } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
 
 const SidebarLinks = [
   {
@@ -21,28 +22,32 @@ const SidebarLinks = [
   },
   {
     name: "Client List",
-    href: "/overview",
+    href: "/client-list",
     icon: <User2Icon />,
   },
   {
     name: "Reservations",
-    href: "/overview",
+    href: "/reservations",
     icon: <Calendar />,
   },
   {
     name: "Reports",
-    href: "/overview",
+    href: "/reports",
     icon: <ReceiptIcon />,
   },
   {
     name: "Smart List",
-    href: "/overview",
+    href: "/smart-list",
     icon: <ListCheck />,
   },
 ];
 
 const Sidebar = () => {
   const { isOpen, setIsOpen } = useSidebar();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const basePath = "/dashboard";
 
   return (
     <>
@@ -55,7 +60,7 @@ const Sidebar = () => {
               <div className="flex w-full flex-row items-center justify-between p-3">
                 <div className="text-2xl font-bold">DASHBOARD</div>
                 <div
-                  className="rounded-sm p-2 hover:bg-gray-200 hover:text-gray-800"
+                  className={`rounded-sm p-2 hover:bg-gray-200 hover:text-gray-800`}
                   onClick={() => setIsOpen(!isOpen)}
                 >
                   <ChevronFirst className="" />
@@ -73,8 +78,9 @@ const Sidebar = () => {
           <div className="pl-2">
             {SidebarLinks.map((link) => (
               <div
-                className="my-2 flex flex-row items-center gap-4 rounded-bl-sm rounded-tl-sm bg-background p-4 hover:bg-gray-100 hover:text-gray-800"
+                className={`my-2 flex cursor-default flex-row items-center gap-4 rounded-bl-sm rounded-tl-sm bg-background p-4 hover:bg-gray-100 hover:text-gray-800 ${pathname === `${basePath}${link.href}` ? "bg-gray-100 text-black" : ""}`}
                 key={link.name}
+                onClick={() => router.push(`${basePath}${link.href}`)}
               >
                 <div>{link.icon}</div>
                 <span className={`${isOpen ? "whitespace-nowrap" : "hidden"} `}>

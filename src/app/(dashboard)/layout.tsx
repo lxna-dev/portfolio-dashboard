@@ -1,6 +1,6 @@
 import TopNav from "@/components/layout/dashboard/navigation/TopNav";
 import Sidebar from "@/components/layout/dashboard/sidebar/Sidebar";
-import { SidebarProvider } from "@/context/SidebarContext";
+import { SidebarContextProvider } from "@/context/SidebarContext";
 
 export default function DashboardLayout({
   children,
@@ -8,14 +8,21 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className="flex flex-row font-geistSans">
-      <SidebarProvider>
-        <Sidebar></Sidebar>
+    <section className="flex flex-col font-geistSans md:flex-row">
+      <SidebarContextProvider>
+        {/* Desktop */}
+        <div className="hidden md:block">
+          <Sidebar></Sidebar>
+        </div>
+
+        {/* Mobile */}
+        <div className="block md:hidden">asdasdas</div>
+
         <div className="flex w-full flex-col">
           <TopNav></TopNav>
           <div className="p-4">{children}</div>
         </div>
-      </SidebarProvider>
+      </SidebarContextProvider>
     </section>
   );
 }
