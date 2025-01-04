@@ -1,5 +1,5 @@
 const SmartList = () => {
-  return <></>;
+  return <>This is content</>;
 };
 
 export default SmartList;

@@ -1,5 +1,5 @@
 const ClientList = () => {
-  return <></>;
+  return <>This is content</>;
 };
 
 export default ClientList;
